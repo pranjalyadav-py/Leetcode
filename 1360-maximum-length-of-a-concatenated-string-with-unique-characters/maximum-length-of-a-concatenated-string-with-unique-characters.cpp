@@ -1,6 +1,6 @@
-
 class Solution {
 public:
+    int n;
     bool hasCommon(string &s1, string& s2) {
         int arr[26] = {0};
         
@@ -17,37 +17,28 @@ public:
         
         return false;
     }
-    
-   unordered_map<string, int> mp;
-    
-    int solve(int idx, vector<string>& arr, string temp, int n) {
+
+    int func(int idx, vector<string>& arr, string temp) {
         if(idx >= n)
             return temp.length();
-        
-        if(mp.find(temp) != mp.end())
-             return mp[temp];
-        
-        int include = 0;
+
         int exclude = 0;
-        if(hasCommon(arr[idx], temp)) {
-            exclude = solve(idx+1, arr, temp, n);
-        } else {
-            exclude = solve(idx+1, arr, temp, n);
-            temp += arr[idx];
-            include = solve(idx+1, arr, temp, n);
+        int include = 0;
+
+        if(hasCommon(arr[idx],temp))
+        exclude = func(idx+1,arr,temp);
+        else
+        {
+            exclude = func(idx+1,arr,temp);
+            temp+=arr[idx];
+            include = func(idx+1,arr,temp);
         }
-        
-        return mp[temp] = max(include, exclude);
-        //return max(include, exclude);
+        return max(exclude,include);
     }
-    
+
     int maxLength(vector<string>& arr) {
         string temp = "";
-        mp.clear();
-        int n = arr.size();
-        
-        return solve(0, arr, temp, n);
-        
+        n = arr.size();
+        return func(0,arr,temp);
     }
 };
-
