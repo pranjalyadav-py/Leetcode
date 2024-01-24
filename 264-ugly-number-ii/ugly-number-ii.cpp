@@ -3,29 +3,26 @@ public:
 
     int nthUglyNumber(int n) {
 
-        priority_queue <long long, vector<long long>, greater<long long>> pq;
-        pq.push(1);
-        map<long long,int> mp;
-        mp[1]++;
+        int arr[n+1];
+        arr[0] = 1;
+        int I,J,K,i=0,j=0,k=0;
 
-        int ans = 1;
+        for(int p =1;p<=n;p++)
+        {
+            I = arr[i]*2;
+            J = arr[j]*3;
+            K = arr[k]*5;
 
-        while(n--){
-        long long i = pq.top()*2;
-        long long j = pq.top()*3;
-        long long k = pq.top()*5;
+            if(I == min(I,min(J,K)))
+            arr[p] = I,i++;
 
-        if(!mp[i])
-        pq.push(i),mp[i]++;
-        if(!mp[j])
-        pq.push(j),mp[j]++;
-        if(!mp[k])
-        pq.push(k),mp[k]++;;
+            if(J == min(I,min(J,K)))
+            arr[p] = J,j++;
 
-        ans = pq.top();
-        pq.pop();
+            if(K == min(I,min(J,K)))
+            arr[p] = K,k++;
         }
-        return ans;
+        return arr[n-1];
     }
     
 };
