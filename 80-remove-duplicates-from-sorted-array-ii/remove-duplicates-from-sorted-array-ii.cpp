@@ -1,6 +1,9 @@
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
+         ios_base::sync_with_stdio(false); 
+         cin.tie(NULL);                    
+         cout.tie(NULL);
         bool z = 0;
         int cnt=1;
         int j =0;
