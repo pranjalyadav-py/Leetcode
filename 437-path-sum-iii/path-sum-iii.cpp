@@ -27,7 +27,10 @@ public:
     }
 
     int pathSum(TreeNode* root, int targetSum) {
-
+        
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL);                    \
+    cout.tie(NULL);
        if(root == nullptr)
        return count;
 
