@@ -31,8 +31,6 @@ public:
             {
                 break;
             }
-
-            cout<<score<<"\n";
         }
 
         return maxi;
