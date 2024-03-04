@@ -10,29 +10,31 @@ public:
         int i =0,j =n-1;
         int score =0;
 
-        if(power>=tokens[0])
-        {
-            power = power - tokens[0];
-            score++;
-            i++;
-        }
+        int maxi =0;
 
-        while((score>0 || power>=tokens[i]) && i<=j)
+        while(i<=j)
         {
-            if(power<tokens[i])
+            if(power>=tokens[i])
+            {
+                score++;
+                power-=tokens[i];
+                maxi=max(maxi,score);
+                i++;
+            }
+            else if(score>0)
             {
                 score--;
                 power+=tokens[j];
                 j--;
             }
-            
-            if(power>=tokens[i])
+            else
             {
-                score++;
-                power-=tokens[i];
-                i++;
+                break;
             }
+
+            cout<<score<<"\n";
         }
-        return score;
+
+        return maxi;
     }
 };
