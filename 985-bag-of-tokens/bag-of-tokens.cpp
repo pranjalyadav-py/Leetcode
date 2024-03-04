@@ -18,18 +18,21 @@ public:
             {
                 score++;
                 power-=tokens[i];
-                maxi=max(maxi,score);
+                maxi=max(maxi,score); // lene ke bad jo bhi max ho wo ans
                 i++;
+                // phle lelo
             }
             else if(score>0)
             {
                 score--;
                 power+=tokens[j];
                 j--;
+                // phir kharch kardo
             }
             else
             {
                 break;
+                // if na le pao na kharch toh break kar do
             }
         }
 
