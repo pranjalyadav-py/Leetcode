@@ -10,18 +10,24 @@
  * };
  */
 class Solution {
-public:
-    int bbt(TreeNode* root)
+public:  
+    int dfs(TreeNode* root)
     {
         if(root == NULL)
         return 0;
 
-        int l = bbt(root->left);
-        int r = bbt(root->right);
+        int l = dfs(root->left);
 
-    
-        if(abs(l-r)>1)
-        return -1000000;
+        if(l == -1)
+        return -1;
+
+        int r = dfs(root->right);
+
+        if(r == -1)
+        return -1;
+
+        if(abs(l - r)>1)
+        return -1;
 
         return 1 + max(l,r);
     }
@@ -32,11 +38,10 @@ public:
         cin.tie(NULL);                    \
         cout.tie(NULL);
 
-        int ans = bbt(root);
-
-        if(ans<0)
+        if(dfs(root)==-1)
         return false;
         else
         return true;
+
     }
 };
