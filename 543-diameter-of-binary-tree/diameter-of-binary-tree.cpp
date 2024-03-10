@@ -23,11 +23,12 @@ public:
         ans = max(ans,l+r);
         return 1 + max(l,r);
     }
+    
     int diameterOfBinaryTree(TreeNode* root) {
         ios_base::sync_with_stdio(false); \
         cin.tie(NULL);                    \
         cout.tie(NULL);
-        
+
         dfs(root);
         return ans;
     }
