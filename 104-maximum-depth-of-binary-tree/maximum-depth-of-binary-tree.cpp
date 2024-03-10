@@ -12,15 +12,42 @@
 class Solution {
 public:
 
-    int height(TreeNode* node)
+int height(TreeNode* node)
+{
+    
+    
+    int level = 0;
+
+    if(node == NULL)
+    return level;
+
+    queue<TreeNode*> q;
+    q.push(node);
+
+    while(!q.empty())
     {
-        if(node == NULL)
-        return 0;
+        int s = q.size();
 
-        int ans = 1 + max(height(node->left),height(node->right));
+        for(int i =0;i<s;i++)
+        {
+            TreeNode* temp = q.front();
+            q.pop();
 
-        return ans;
+            if(temp->right!=NULL)
+            q.push(temp->right);
+
+            if(temp->left!=NULL)
+            q.push(temp->left);
+        }
+
+        level++;
+
+        cout<<level<<"\n";
+        cout<<q.size()<<"\n";
     }
+
+    return level;
+}
 
     int maxDepth(TreeNode* root) {
 
