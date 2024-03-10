@@ -12,46 +12,21 @@
 class Solution {
 public:
 
-int height(TreeNode* node)
-{
-    ios_base::sync_with_stdio(false); \
-    cin.tie(NULL);                    \
-    cout.tie(NULL);
-    
-    int level = 0;
-
-    if(node == NULL)
-    return level;
-
-    queue<TreeNode*> q;
-    q.push(node);
-
-    while(!q.empty())
+    int height(TreeNode* node)
     {
-        int s = q.size();
+        if(node == NULL)
+        return 0;
 
-        for(int i =0;i<s;i++)
-        {
-            TreeNode* temp = q.front();
-            q.pop();
+        int ans = 1 + max(height(node->left),height(node->right));
 
-            if(temp->right!=NULL)
-            q.push(temp->right);
-
-            if(temp->left!=NULL)
-            q.push(temp->left);
-        }
-
-        level++;
-
-        cout<<level<<"\n";
-        cout<<q.size()<<"\n";
+        return ans;
     }
 
-    return level;
-}
-
     int maxDepth(TreeNode* root) {
+
+        ios_base::sync_with_stdio(false); \
+        cin.tie(NULL);                    \
+        cout.tie(NULL);
         return height(root);
     }
 };
