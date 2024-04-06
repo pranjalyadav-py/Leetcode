@@ -3,7 +3,6 @@ public:
     string minRemoveToMakeValid(string s) {
 
        ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
-       map<int,int> mp;
        stack<int> st;
        string ans = "";
 
@@ -13,8 +12,8 @@ public:
         st.push(i);
         else if(s[i]==')' && !st.empty())
         {
-            mp[st.top()]++;
-            mp[i]++;
+            s[st.top()]='O';
+            s[i]='C';
             st.pop();
         }
        }
@@ -23,8 +22,10 @@ public:
        {
         if(s[i]>='a' && s[i]<='z')
         ans+=s[i];
-        else if(mp[i])
-        ans+=s[i];
+        else if(s[i]=='C')
+        ans+=')';
+        else if(s[i]=='O')
+        ans+='(';
        }
 
        return ans;
